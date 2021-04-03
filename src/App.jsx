@@ -5,7 +5,9 @@ import configureStore, { history } from 'src/store';
 import { createTheme } from 'src/shared/theme';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import ErrorBoundary from 'src/shared/components/ErrorBoundary.ig';
+import { BrowserRouter } from "react-router-dom";
 import Router from './Router';
+import Auth0ProviderWithHistory from './auth0-provider-with-history';
 
 const store = configureStore();
 
@@ -17,7 +19,11 @@ const App = () => {
       <ConnectedRouter history={history}>
         <ThemeProvider theme={theme}>
           <ErrorBoundary>
-            <Router />
+            <BrowserRouter>
+              <Auth0ProviderWithHistory>
+                <Router />
+              </Auth0ProviderWithHistory>
+            </BrowserRouter>
           </ErrorBoundary>
         </ThemeProvider>
       </ConnectedRouter>
