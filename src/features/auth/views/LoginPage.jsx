@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 import { authActions } from 'src/features/auth/redux';
+import * as authOperations from 'src/features/auth/redux/authOperations';
 import { routes } from 'src/shared/constants';
 import { authSelectors } from 'src/features/auth/redux/authSlice';
 import { Logo } from 'src/shared/assets/svg';
@@ -69,7 +70,8 @@ const LoginPage = () => {
     if (isAuthenticated && user) 
       batch(() => {
         dispatch(authActions.setIsUserAuthenticated(true));
-        dispatch(authActions.setAuth0User(user));            
+        dispatch(authActions.setAuth0User(user));
+        dispatch(authOperations.getUserByEmail({ userEmail: user.email}));
       });
   }, [user, isAuthenticated, auth0User]);
 
