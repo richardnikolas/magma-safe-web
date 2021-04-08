@@ -6,6 +6,11 @@ const baseStyles = makeStyles(theme => ({
     fontFamily: theme.typography.h3.fontFamily,
     fontWeight: 700
   },
+  title: {
+    fontWeight: 800,
+    fontSize: '2em',
+    color: theme.palette.primary.darkBlue
+  },
   mt15: { marginTop: 15 },
   mt30: { marginTop: 30 },
   mt40: { marginTop: 40 },
@@ -35,6 +40,10 @@ const baseStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  flexEvenly: {
+    display: 'flex',
+    justifyContent: 'space-evenly'
   },
   btn: {
     borderRadius: 22,

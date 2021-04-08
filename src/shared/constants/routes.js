@@ -4,8 +4,7 @@ export const routes = Object.freeze({
     path: '/home'
   },
   login: {
-    path: '/login',
-    signUp: '/sign-up'
+    path: '/login'
   },
   callback: {
     path: '/callback'
