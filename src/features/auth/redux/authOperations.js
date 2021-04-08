@@ -10,4 +10,15 @@ export const getUserByEmail = createAsyncThunk(
       return rejectWithValue(error);
     }
   }
-)
+);
+
+export const createNewUser = createAsyncThunk(
+  'auth/CREATE_NEW_USER',
+  async ({ userEmail, userName }, { rejectWithValue }) => {
+    try {
+      return await authManager.createNewUser({ userEmail, userName });
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

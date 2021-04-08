@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { makeStyles, Typography, Button, Paper } from '@material-ui/core';
 import { authActions } from 'src/features/auth/redux';
+import baseStyles from 'src/shared/constants/baseStyles';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -20,11 +21,6 @@ const useStyles = makeStyles((theme) => ({
     width: '65%',
     textAlign: 'center',
     padding: 10
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 800,
-    marginTop: 25
   },
   buttons: {
     display: 'flex',
@@ -44,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
     textTransform: 'capitalize',
     '&:hover': {
-      backgroundColor: theme.palette.primary.salmon,
-      border: '1px solid #FFF',
+      backgroundColor: theme.palette.secondary.main,
       cursor: 'pointer'
     }
   },
@@ -60,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 const LoginCard = ({ isAuthenticated, loginWithRedirect, logout }) => {  
   const dispatch = useDispatch();
   const classes = useStyles();
+  const baseClasses = baseStyles();
   
   const handleLogout = () => {
     dispatch(authActions.cleanAuth());
@@ -67,9 +63,9 @@ const LoginCard = ({ isAuthenticated, loginWithRedirect, logout }) => {
   };
 
   return (    
-    <Paper elevation={3} className={classes.paper}>
+    <Paper elevation={5} className={classes.paper}>
 
-      <Typography className={classes.title}>
+      <Typography className={baseClasses.title} style={{ marginTop: 25 }}>
         Faça seu login
       </Typography>
 

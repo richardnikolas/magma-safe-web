@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { authSelectors } from 'src/features/auth/redux/authSlice';
 import { routes } from 'src/shared/constants';
+import { MagmaAppBar } from './components';
 
 const useStyles = makeStyles((theme) => ({
-  dummy: {
+  container: {
     backgroundColor: theme.palette.primary.main,
     height: '100%',
     alignItems: 'center'
@@ -22,20 +23,26 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
   const classes = useStyles();
-  const auth0User = useSelector(authSelectors.getAuth0User);
+  const dbUser = useSelector(authSelectors.getUser);
+  const isUserLoggintOut = useSelector(authSelectors.getIsUserLoggintOut);
   const { push } = useHistory();
-
-  // if(!auth0User)
-  //   push(routes.login.path);
+  
+  useEffect(() => {   
+    if(isUserLoggintOut)
+      push(routes.login.path);
+  }, [isUserLoggintOut]);
 
   return (
-    <Grid container className={classes.dummy}>
-      <Grid item xs={12}>
-        <Typography className={classes.title}>
-          MagmaSafe
-        </Typography>
+    <>
+      <MagmaAppBar dbUser={dbUser} />
+      <Grid container className={classes.container}>
+        <Grid item xs={12}>
+          <Typography className={classes.title}>
+            MagmaSafe
+          </Typography>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
