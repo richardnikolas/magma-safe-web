@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MagmaLoader from './MagmaLoader';
+import { LoaderThreeDots } from 'src/shared/components';
 
 const LoaderPage = () => {
   const loader = useSelector((state) => state.loader);
 
   if (!loader.isLoading) return null;
 
-  return <MagmaLoader />;
+  return <LoaderThreeDots />;
 };
 
 export default LoaderPage;

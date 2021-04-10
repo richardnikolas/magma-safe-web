@@ -8,7 +8,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -60,6 +61,19 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/{features,shared}/**/*.{js,jsx}",
+      "!src/features/**/views/*",
+      "!src/shared/theme/*",
+      "!src/shared/constants/*",
+      "!src/**/index.js",
+      "!src/**/*.stories.js",
+      "!src/**/*Service.js",
+      "!src/**/mock.js",
+      "!src/**/tests/**"
     ]
   },
   "browserslist": {

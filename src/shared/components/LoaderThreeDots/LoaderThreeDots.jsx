@@ -8,14 +8,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const MagmaLoader = () => {
+const LoaderThreeDots = () => {
   const classes = useStyles();
   const theme = useTheme();
 
   return (
-    <Backdrop className={classes.backdrop} open>
+    <Backdrop className={classes.backdrop} open data-testid="loaderThreeDots">
       <Loader 
-        type="TailSpin"
+        type="ThreeDots"
         height={150}
         width={150}
         color={theme.palette.primary.grayReddish}
@@ -24,4 +24,4 @@ const MagmaLoader = () => {
   );
 };
 
-export default MagmaLoader;
+export default LoaderThreeDots;
