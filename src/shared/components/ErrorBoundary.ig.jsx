@@ -10,7 +10,7 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
     this.setState({
       error,
-      errorInfo,
+      errorInfo
     });
   }
 
@@ -36,7 +36,7 @@ class ErrorBoundary extends React.Component {
 }
 
 ErrorBoundary.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 };
 
 export default ErrorBoundary;

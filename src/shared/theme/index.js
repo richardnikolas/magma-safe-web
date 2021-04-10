@@ -9,8 +9,11 @@ export const createTheme = (color = DEFAULT_THEME) => {
     palette: {
       primary: {
         main: color.primary,
-        salmon: '#D1553D',
-        darkRedBrown: '#170909'
+        salmon: '#FF6E64',
+        gray: '#F0EDED',
+        grayReddish: '#F8EBEB',
+        darkRedBrown: '#170909',
+        darkBlue: '#132540'
       },
       secondary: {
         main: color.secondary

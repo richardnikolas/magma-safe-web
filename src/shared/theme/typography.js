@@ -3,7 +3,7 @@ const font = ['Open Sans', 'sans-serif'].join(',');
 const textStyle = {
   fontFamily: font,
   fontWeight: 700,
-  color: '#0F0801',
+  color: '#0F0801'
 };
 
 export default {
@@ -15,9 +15,9 @@ export default {
   h5: textStyle,
   h6: textStyle,
   subtitle1: {
-    fontFamily: font,
+    fontFamily: font
   },
   subtitle2: {
-    fontFamily: font,
-  },
+    fontFamily: font
+  }
 };

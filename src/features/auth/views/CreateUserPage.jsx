@@ -2,31 +2,31 @@ import React from 'react';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  dummy: {
+  container: {
     backgroundColor: theme.palette.primary.main,
     height: '100%',
     alignItems: 'center'
-  },
+  },  
   title: {
     color: '#FFFFFF',
     fontWeight: 700,
-    fontSize: 100,
+    fontSize: 80,
     textAlign: 'center'
   }
 }));
 
-const Dummy = () => {
+const CreateUserPage = () => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.dummy}>
-      <Grid item xs={12}>
+    <Grid container className={classes.container}>
+      <Grid item xs={8}>
         <Typography className={classes.title}>
-          MagmaSafe
+          CreateUserPage
         </Typography>
       </Grid>
     </Grid>
   );
 };
 
-export default Dummy;
+export default CreateUserPage;

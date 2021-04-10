@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
-    jest: true,
+    jest: true
   },
   extends: [
     'plugin:react/recommended',
@@ -12,10 +12,10 @@ module.exports = {
   ],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 11,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react', 'sonarjs', 'react-hooks'],
   rules: {
@@ -26,7 +26,9 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'no-param-reassign': 'off',
     'no-empty': ['error', { allowEmptyCatch: true }],
-    'no-warning-comments': [1, { terms: ['fixme'], location: 'start' }],
+    'comma-dangle': ['error', 'never'],
+    'no-unused-vars': 'warn',
+    'no-warning-comments': [1, { terms: ['fixme'], location: 'start' }]
   },
-  parser: 'babel-eslint',
+  parser: 'babel-eslint'
 };

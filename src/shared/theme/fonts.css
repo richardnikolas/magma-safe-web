@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-display: block;
+  src: url('./fonts/League-Spartan/LeagueSpartan-Bold.otf') format('opentype');
+}
+
+/* @font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: block;
+  src: url('./fonts/Poppins/poppins.eot') format('embedded-opentype'),
+  url('./fonts/Poppins/poppins.ttf') format('truetype'),
+  url('./fonts/Poppins/poppins.svg') format('svg'),
+  url('./fonts/Poppins/poppins.woff') format('woff')
+} */
