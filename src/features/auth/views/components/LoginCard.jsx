@@ -60,6 +60,9 @@ const LoginCard = ({ isAuthenticated, loginWithRedirect, logout }) => {
   const handleLogout = () => {
     dispatch(authActions.cleanAuth());
     logout();
+    try {
+      localStorage.removeItem('loggedUser');
+    } catch {}
   };
 
   return (    

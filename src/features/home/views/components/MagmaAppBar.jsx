@@ -116,6 +116,9 @@ const MagmaAppBar = ({ dbUser }) => {
   const handleLogout = async () => {
     await logout();
     dispatch(authActions.setUserLoggintOut(true));    
+    try {
+      localStorage.removeItem('loggedUser');
+    } catch {}
   };
 
   return (
