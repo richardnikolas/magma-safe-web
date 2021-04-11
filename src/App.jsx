@@ -5,6 +5,7 @@ import configureStore, { history } from 'src/store';
 import { createTheme } from 'src/shared/theme';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import ErrorBoundary from 'src/shared/components/ErrorBoundary.ig';
+import LoaderPage from 'src/features/loader/views/LoaderPage';
 import { BrowserRouter } from "react-router-dom";
 import Router from './Router';
 import Auth0ProviderWithHistory from './auth0-provider-with-history';
@@ -21,7 +22,10 @@ const App = () => {
           <ErrorBoundary>
             <BrowserRouter>
               <Auth0ProviderWithHistory>
-                <Router />
+                <>
+                  <LoaderPage />
+                  <Router />
+                </>
               </Auth0ProviderWithHistory>
             </BrowserRouter>
           </ErrorBoundary>
