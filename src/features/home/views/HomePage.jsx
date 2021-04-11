@@ -8,9 +8,10 @@ import { MagmaAppBar } from './components';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: theme.palette.primary.main,
-    height: '100%',
-    alignItems: 'center'
+    backgroundColor: theme.palette.primary.darkRedBrown,
+    minHeight: '100%',
+    alignItems: 'center',
+    paddingBottom: 50
   },
   title: {
     color: '#FFFFFF',

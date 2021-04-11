@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import ErrorBoundary from 'src/shared/components/ErrorBoundary.ig';
 import LoaderPage from 'src/features/loader/views/LoaderPage';
 import { BrowserRouter } from "react-router-dom";
+import { SmallFooter } from 'src/shared/components';
 import Router from './Router';
 import Auth0ProviderWithHistory from './auth0-provider-with-history';
 
@@ -25,6 +26,7 @@ const App = () => {
                 <>
                   <LoaderPage />
                   <Router />
+                  <SmallFooter />
                 </>
               </Auth0ProviderWithHistory>
             </BrowserRouter>

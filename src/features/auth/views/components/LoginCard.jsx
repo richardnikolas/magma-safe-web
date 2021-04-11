@@ -20,17 +20,22 @@ const useStyles = makeStyles((theme) => ({
     height: '70%',
     width: '65%',
     textAlign: 'center',
-    padding: 10
+    padding: '60px 10px',
+    [theme.breakpoints.down('xs')]: {
+      width: '80%',
+      marginTop: 50
+    }
   },
   buttons: {
     display: 'flex',
     height: '100%',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 35
   },
   btn: {
-    width: '50%',
+    width: '55%',
     height: 100,
     backgroundColor: theme.palette.primary.salmon,
     color: '#FFF',
@@ -42,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: theme.palette.secondary.main,
       cursor: 'pointer'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '75%'
     }
   },
   logoutBtn: {
@@ -68,7 +76,7 @@ const LoginCard = ({ isAuthenticated, loginWithRedirect, logout }) => {
   return (    
     <Paper elevation={5} className={classes.paper}>
 
-      <Typography className={baseClasses.title} style={{ marginTop: 25 }}>
+      <Typography className={baseClasses.title}>
         Faça seu login
       </Typography>
 
