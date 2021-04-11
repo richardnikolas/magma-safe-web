@@ -65,7 +65,10 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
+    [theme.breakpoints.down('xs')]: {
+      marginRight: theme.spacing(1)
+    }
   },
   hide: {
     display: 'none'
@@ -74,7 +77,10 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'League Spartan',
     color: theme.palette.primary.main,
     fontWeight: 800,
-    fontSize: 22
+    fontSize: 22,
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
   },
   logo: {
     width: 55,
@@ -98,6 +104,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 8,   
     '&:hover': {
       backgroundColor: theme.palette.primary.darkRedBrown
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: 85
     }
   }
 }));

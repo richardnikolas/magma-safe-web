@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector, batch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import clsx from 'clsx';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 import { authActions } from 'src/features/auth/redux';
 import * as authOperations from 'src/features/auth/redux/authOperations';
@@ -14,45 +15,41 @@ import { LoginCard, SignUpCard } from './components';
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.primary.main,
-    height: '100%',
-    alignItems: 'center'
+    minHeight: '100%',
+    alignItems: 'center',
+    paddingBottom: 50
   },
   title: {
     fontFamily: 'League Spartan',
-    display: 'inline-block',
+    display: 'flex',
     color: '#FFFFFF',
     fontWeight: 700,
     fontSize: 80,
     textAlign: 'right',
     lineHeight: '85px',
-    marginRight: 20
+    marginRight: 20,
+    justifyContent: 'flex-end',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: 25,
+      fontSize: 60,
+      lineHeight: '63px',
+      justifyContent: 'center'
+    }
+  },
+  logoWrapper: {
+    display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'center'
+    }
   },
   logo: {
-    width: 400
-  },
-  paper: {
-    borderRadius: 20,
-    height: '80%',
-    width: '65%'
-  },
-  btn: {
-    width: '80%',
-    height: 50,
-    backgroundColor: theme.palette.primary.salmon,
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: 600,
-    '&:hover': {
-      backgroundColor: theme.palette.primary.salmon,
-      border: '1px solid #FFF',
-      cursor: 'pointer'
+    width: '50vh',
+    [theme.breakpoints.down('xs')]: {
+      width: '25vh'
     }
   },
-  logoutBtn: {
-    backgroundColor: theme.palette.primary.darkRedBrown,
-    '&:hover': {
-      backgroundColor: theme.palette.primary.darkRedBrown
-    }
+  cardsWrapper: {
+    backgroundColor: theme.palette.primary.main
   }
 }));
 
@@ -89,14 +86,20 @@ const LoginPage = () => {
 
   return (
     <Grid container className={classes.container}>
-      <Grid item md={7} className={baseClasses.flexTrueCenter}>
-        <Typography className={classes.title}>
-          Magma <br />Safe
-        </Typography>
-        <img src={Logo} alt="MagmaSafe Logo" className={classes.logo}/>
+      <Grid item md={7} xs={12} style={{ height: '100%' }}>
+        <Grid container className={baseClasses.flexTrueCenter}>
+          <Grid item md={6} xs={12}>
+            <Typography className={classes.title}>
+              Magma <br />Safe
+            </Typography>
+          </Grid>
+          <Grid item md={6} xs={12} className={classes.logoWrapper}>
+            <img src={Logo} alt="MagmaSafe Logo" className={classes.logo}/>
+          </Grid>
+        </Grid>
       </Grid>
 
-      <Grid item md={5} className={baseClasses.flexTrueCenter} style={{height: '100%'}}>
+      <Grid item md={5} xs={12} className={clsx(baseClasses.flexTrueCenter, classes.cardsWrapper)} style={{height: '100%'}}>
         {isUserAlreadyRegistered() 
           ? 
           <SignUpCard auth0User={auth0User} />

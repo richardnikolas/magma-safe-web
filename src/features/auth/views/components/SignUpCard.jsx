@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme) => ({
     height: '70%',
     width: '65%',
     textAlign: 'center',
-    padding: 10
+    padding: '60px 10px',
+    [theme.breakpoints.down('xs')]: {
+      width: '80%',
+      marginTop: 50
+    }
   },
   btn: {
     width: '100%',
@@ -45,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     '&:disabled': {
       backgroundColor: theme.palette.primary.gray,
       border: `1px solid ${theme.palette.primary.salmon}`
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '80%',
+      height: 80
     }
   }
 }));
@@ -91,12 +99,12 @@ const SignUpCard = ({ auth0User }) => {
 
   return (    
     <Paper elevation={5} className={classes.paper}>
-      <Typography className={baseClasses.title} style={{ marginTop: 25 }}>
+      <Typography className={baseClasses.title}>
         Informações <br /> complementares
       </Typography>
 
       <div className={clsx(baseClasses.flexColumn, baseClasses.flexEvenly)} style={{ height: '100%' }}>
-        <Grid container justify="center">
+        <Grid container justify="center" style={{padding: '30px 0'}}>
           <Grid item md={9} xs={10}>
             <TextInput
               label="Nome"
