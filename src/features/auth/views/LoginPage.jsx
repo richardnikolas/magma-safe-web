@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 50
   },
   title: {
-    fontFamily: 'League Spartan',
+    fontFamily: 'Changa',
     display: 'flex',
     color: '#FFFFFF',
-    fontWeight: 700,
-    fontSize: 80,
+    fontWeight: 700,  
+    fontSize: 95,
     textAlign: 'right',
     lineHeight: '85px',
     marginRight: 20,
