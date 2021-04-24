@@ -11,6 +11,7 @@ export const createTheme = (color = DEFAULT_THEME) => {
         main: color.primary,
         salmon: '#FF6E64',
         gray: '#F0EDED',
+        darkGray: '#454141',
         grayReddish: '#F8EBEB',
         darkRedBrown: '#170909',
         darkBlue: '#132540'

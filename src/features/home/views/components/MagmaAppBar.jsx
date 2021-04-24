@@ -5,12 +5,13 @@ import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import { authActions } from 'src/features/auth/redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Toolbar, AppBar, IconButton, Typography, Divider, Drawer } from '@material-ui/core';
-import { Menu as MenuIcon, ChevronLeft } from '@material-ui/icons';
+import { Button, Toolbar, AppBar, IconButton, Typography } from '@material-ui/core';
+import { Menu as MenuIcon } from '@material-ui/icons';
 import { Logo } from 'src/shared/assets/svg';
 import baseStyles from 'src/shared/constants/baseStyles';
+import MagmaDrawer from './MagmaDrawer';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -31,38 +32,6 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen
     })
   },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    backgroundColor: theme.palette.primary.gray
-  },
-  drawerHeader: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar    
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    marginLeft: -drawerWidth
-  },
-  contentShift: {
-    marginLeft: 0,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
   menuButton: {
     marginRight: theme.spacing(2),
     color: theme.palette.primary.main,
@@ -74,10 +43,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'none'
   },
   title: {
-    fontFamily: 'League Spartan',
+    fontFamily: 'Changa',
     color: theme.palette.primary.main,
-    fontWeight: 800,
-    fontSize: 22,
+    fontWeight: 600,
+    fontSize: 28,
     [theme.breakpoints.down('xs')]: {
       display: 'none'
     }
@@ -166,22 +135,7 @@ const MagmaAppBar = ({ dbUser }) => {
         </Toolbar>
       </AppBar>
 
-      <Drawer 
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={drawerOpen}
-        classes={{
-          paper: classes.drawerPaper
-        }}
-       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerOpen}>
-            <ChevronLeft />
-          </IconButton>
-        </div>
-        <Divider />
-      </Drawer>
+      <MagmaDrawer isOpen={drawerOpen} handleDrawerOpen={handleDrawerOpen}/>
     </div>
   );
 };
