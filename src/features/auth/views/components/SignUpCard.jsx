@@ -8,6 +8,7 @@ import { TextInput } from 'src/shared/components';
 import * as authOperations from 'src/features/auth/redux/authOperations';
 import { authSelectors } from 'src/features/auth/redux/authSlice';
 import { routes, fetchStatus } from 'src/shared/constants';
+import { textInputErrorMessage } from 'src/shared/constants/functions';
 import baseStyles from 'src/shared/constants/baseStyles';
 
 const useStyles = makeStyles((theme) => ({
@@ -76,15 +77,6 @@ const SignUpCard = ({ auth0User }) => {
     return false;
   };
 
-  const textInputErrorMessage = () => {
-    if (userName?.length < 2)
-      return 'Tamanho mínimo de 2 caracteres';
-    if (userName?.length > 25) 
-      return 'Tamanho máximo de 25 caracteres';
-
-    return 'Preenchimento obrigatório';
-  };
-
   const handleCreateUser = async () => {
     await dispatch(authOperations.createNewUser({ userEmail: auth0User.email, userName }));
     push(routes.home.path);
@@ -113,7 +105,7 @@ const SignUpCard = ({ auth0User }) => {
               onChange={handleChangeName}
               max={25}
               min={2}
-              errorMessage={textInputErrorMessage()}
+              errorMessage={textInputErrorMessage({ input: userName, min: 2, max: 25 })}
               required
               style={{ fontSize: 20 }}
             />

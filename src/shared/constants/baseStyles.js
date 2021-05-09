@@ -1,6 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const baseStyles = makeStyles(theme => ({
+  pageContainer: {
+    backgroundColor: theme.palette.primary.darkRedBrown,
+    minHeight: '100%',
+    alignItems: 'center',
+    padding: '65px 0 50px 75px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '60px 0 50px 0'
+    }
+  },
   boldText: {
     color: theme.palette.text.primary,
     fontFamily: theme.typography.h3.fontFamily,
@@ -36,6 +45,10 @@ const baseStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center'
   },
+  flexAlignCenter: {
+    display: 'flex',
+    alignItems: 'center'
+  },
   flexTrueCenter: {
     display: 'flex',
     justifyContent: 'center',
@@ -49,6 +62,37 @@ const baseStyles = makeStyles(theme => ({
     borderRadius: 22,
     padding: 12,
     textTransform: 'uppercase'
+  },
+  primaryBtn: {
+    padding: '10px 20px',
+    borderRadius: 15,
+    fontWeight: 600,
+    textTransform: 'capitalize',
+    backgroundColor: theme.palette.primary.main,
+    color: '#FFFFFF',
+    '&:hover': {
+      backgroundColor: theme.palette.primary.main
+    },
+    '&:disabled': {
+      backgroundColor: theme.palette.primary.gray
+    }
+  },
+  secondaryBtn: {
+    padding: '10px 20px',
+    borderRadius: 15,
+    fontWeight: 600,
+    textTransform: 'capitalize',
+    color: theme.palette.primary.main,
+    border: `1px solid #FFFFFF`,
+    marginRight: 20,
+    backgroundColor: '#FFFFFF',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+      border: `1px solid ${theme.palette.primary.main}`
+    },
+    '&:disabled': {
+      backgroundColor: theme.palette.primary.gray
+    }
   }
 }));
 

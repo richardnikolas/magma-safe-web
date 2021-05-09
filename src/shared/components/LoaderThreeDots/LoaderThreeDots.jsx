@@ -2,9 +2,9 @@ import React from 'react';
 import { Backdrop, makeStyles, useTheme } from '@material-ui/core';
 import Loader from 'react-loader-spinner';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   backdrop: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: 9999
   }
 }));
 

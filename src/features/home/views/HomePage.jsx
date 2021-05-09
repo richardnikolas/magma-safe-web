@@ -4,17 +4,9 @@ import { makeStyles, Grid, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { authSelectors } from 'src/features/auth/redux/authSlice';
 import { routes } from 'src/shared/constants';
+import baseStyles from 'src/shared/constants/baseStyles';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: theme.palette.primary.darkRedBrown,
-    minHeight: '100%',
-    alignItems: 'center',
-    padding: '70px 0 50px 80px',
-    [theme.breakpoints.up('xs')]: {
-      padding: '60px 0 50px 0'
-    }
-  },
+const useStyles = makeStyles(() => ({
   title: {
     color: '#FFFFFF',
     fontWeight: 700,
@@ -26,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
   const classes = useStyles();
+  const baseClasses = baseStyles();
   const isUserLoggintOut = useSelector(authSelectors.getIsUserLoggintOut);
   const { push } = useHistory();
   
@@ -35,7 +28,7 @@ const HomePage = () => {
   }, [isUserLoggintOut]);
 
   return (
-    <Grid container className={classes.container}>
+    <Grid container className={baseClasses.pageContainer}>
       <Grid item xs={12}>
         <Typography className={classes.title}>
           MagmaSafe

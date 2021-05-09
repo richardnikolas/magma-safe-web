@@ -1,11 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, IconButton, Divider, List, ListItem, ListItemIcon, ListItemText, useTheme } from '@material-ui/core';
 import { ChevronLeft, Menu as MenuIcon, Home, Lock, Dns, History, AccountBox } from '@material-ui/icons';
 import { drawerItems } from 'src/shared/constants';
+import { homeActions } from 'src/features/home/redux';
 
 const drawerWidth = 200;
 
@@ -104,6 +106,7 @@ const getDrawerIcon = (item) => {
 
 const MagmaDrawer = ({ isOpen, handleDrawerOpen }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { push } = useHistory();
 
   return (
@@ -132,7 +135,10 @@ const MagmaDrawer = ({ isOpen, handleDrawerOpen }) => {
           <ListItem
             key={item.name}  
             button 
-            onClick={() => push(item.link)}
+            onClick={() => { 
+              push(item.link);
+              dispatch(homeActions.closeDrawer());
+            }}
             className={clsx({
               [classes.menuItemClosed]: !isOpen,
               [classes.menuItemOpened]: isOpen

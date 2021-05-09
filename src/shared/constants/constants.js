@@ -25,12 +25,12 @@ export const drawerItems = [
     icon: 'Lock'
   },
   { 
-    name: 'History', 
+    name: 'Histórico', 
     link: routes.home.recents,
     icon: 'History'
   },
   { 
-    name: 'Profile',
+    name: 'Perfil',
     link: routes.profile.path,
     icon: 'AccountBox'
   }

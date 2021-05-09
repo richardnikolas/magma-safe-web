@@ -47,7 +47,7 @@ const authSlice = createSlice({
     }
   },
   extraReducers: {
-    /* getUserByEmail */
+    // #region getUserByEmail
     [authOperations.getUserByEmail.fulfilled]: (state, action) => {
       state.user = {
         ...action.payload,
@@ -70,7 +70,9 @@ const authSlice = createSlice({
         }
       };      
     },
-    /* createNewUser */
+    // #endregion
+    
+    // #region  createNewUser
     [authOperations.createNewUser.fulfilled]: (state, action) => {
       state.newUser = {
         id: action.payload,
@@ -93,6 +95,7 @@ const authSlice = createSlice({
         }
       };
     }
+    // #endregion
   }
 });
 

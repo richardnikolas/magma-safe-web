@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import { authActions } from 'src/features/auth/redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +9,8 @@ import { Button, Toolbar, AppBar, IconButton, Typography } from '@material-ui/co
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { Logo } from 'src/shared/assets/svg';
 import baseStyles from 'src/shared/constants/baseStyles';
+import { homeActions } from 'src/features/home/redux';
+import { homeSelectors } from 'src/features/home/redux/homeSlice';
 import MagmaDrawer from './MagmaDrawer';
 
 const drawerWidth = 200;
@@ -67,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logoutBtn: {
     width: 100,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.darkRedBrown,
     color: theme.palette.primary.gray,
     borderRadius: 15,
     padding: 8,   
@@ -83,12 +85,12 @@ const useStyles = makeStyles((theme) => ({
 const MagmaAppBar = ({ dbUser }) => {
   const dispatch = useDispatch();
   const { logout } = useAuth0();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const isDrawerOpen = useSelector(homeSelectors.getIsDrawerOpen);
   const classes = useStyles();
   const baseClasses = baseStyles();
 
   const handleDrawerOpen = () => {
-    setDrawerOpen(!drawerOpen);
+    dispatch(homeActions.toggleDrawer());
   };
 
   const handleLogout = async () => {
@@ -103,7 +105,7 @@ const MagmaAppBar = ({ dbUser }) => {
     <div className={baseClasses.flexRow}>
       <AppBar 
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: drawerOpen
+          [classes.appBarShift]: isDrawerOpen
         })}
       >
         <Toolbar className={classes.toolbar}>
@@ -112,7 +114,7 @@ const MagmaAppBar = ({ dbUser }) => {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, drawerOpen && classes.hide)}
+            className={clsx(classes.menuButton, isDrawerOpen && classes.hide)}
           >
             <MenuIcon fontSize="large" />
           </IconButton>
@@ -135,7 +137,7 @@ const MagmaAppBar = ({ dbUser }) => {
         </Toolbar>
       </AppBar>
 
-      <MagmaDrawer isOpen={drawerOpen} handleDrawerOpen={handleDrawerOpen}/>
+      <MagmaDrawer isOpen={isDrawerOpen} handleDrawerOpen={handleDrawerOpen}/>
     </div>
   );
 };

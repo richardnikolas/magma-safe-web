@@ -6,6 +6,7 @@ import { authSelectors } from 'src/features/auth/redux/authSlice';
 import LoginPage from 'src/features/auth/views/LoginPage';
 import HomePage from 'src/features/home/views/HomePage';
 import ProfilePage from 'src/features/home/views/ProfilePage';
+import ServersPage from 'src/features/servers/views/ServersPage';
 import { MagmaAppBar } from 'src/features/home/views/components';
 
 const Router = () => {
@@ -22,6 +23,7 @@ const Router = () => {
             <Switch>            
               <Route exact path={routes.home.path} component={HomePage} />
               <Route exact path={routes.profile.path} component={ProfilePage} />
+              <Route exact path={routes.servers.path} component={ServersPage} />
               <Route render={() => <Redirect path="*" to={routes.login.path} />} />
             </Switch>
           </>
