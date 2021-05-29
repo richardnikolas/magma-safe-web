@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const homeSelectors = {
-  getIsDrawerOpen: ({ home }) => home.isDrawerOpen
+  getIsDrawerOpen: ({ home }) => home.isDrawerOpen,
+  getMagmaSnackbar: ({ home }) => home.magmaSnackbar
 };
 
 const INITIAL_STATE = {
-  isDrawerOpen: false
+  isDrawerOpen: false,
+  magmaSnackbar: null
 };
 
 const homeSlice = createSlice({
@@ -20,6 +22,16 @@ const homeSlice = createSlice({
     },
     closeDrawer(state) {
       state.isDrawerOpen = false
+    },
+    setMagmaSnackbar(state, action) {
+      const { message, severity } = action.payload;
+      state.magmaSnackbar = { 
+        message, 
+        severity 
+      };
+    },
+    cleanMagmaSnackbar(state) {
+      state.magmaSnackbar = null
     }
   }
 });

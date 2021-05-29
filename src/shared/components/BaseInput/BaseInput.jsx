@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
@@ -30,6 +31,9 @@ const BaseInput = ({
   tooltip,
   inputIsInvalid,
   propertyName,
+  endAdornment,
+  type,
+  showPassword,
   ...props
 }) => {
   const classes = useStyles();
@@ -49,6 +53,7 @@ const BaseInput = ({
         <Input
           error={hasError || inputIsInvalid}
           value={value}
+          type={type === 'password' ? (showPassword ? 'text' : 'password') : 'text'}
           onChange={(e) => {
             onChange(e.target.value, isValid(e.target.value), propertyName);
             setError(false);
@@ -58,7 +63,7 @@ const BaseInput = ({
             else if (onBlur) onBlur(value);
           }}
           {...props}
-          endAdornment={tooltip !== null ? <Tooltip title={tooltip} /> : <></>}
+          endAdornment={endAdornment ?? (tooltip !== null ? <Tooltip title={tooltip} /> : <></>)}
         />
         {(hasError || inputIsInvalid) && (
           <FormHelperText className={classes.helperText} error={hasError || inputIsInvalid} data-testid="base-input-helper">
@@ -83,6 +88,9 @@ BaseInput.propTypes = {
   inputComponent: PropTypes.func,
   tooltip: PropTypes.string,
   inputIsInvalid: PropTypes.bool,
+  endAdornment: PropTypes.node,
+  type: PropTypes.string,
+  showPassword: PropTypes.bool,
   propertyName: PropTypes.string
 };
 
@@ -97,6 +105,9 @@ BaseInput.defaultProps = {
   inputComponent: null,
   tooltip: null,
   inputIsInvalid: false,
+  endAdornment: null,
+  type: 'text',
+  showPassword: true,
   propertyName: null
 };
 

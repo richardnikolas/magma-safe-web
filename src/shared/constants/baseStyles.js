@@ -5,7 +5,7 @@ const baseStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.darkRedBrown,
     minHeight: '100%',
     alignItems: 'center',
-    padding: '65px 0 50px 75px',
+    padding: '65px 0 0 75px',
     [theme.breakpoints.down('xs')]: {
       padding: '60px 0 50px 0'
     }
@@ -20,7 +20,13 @@ const baseStyles = makeStyles(theme => ({
     fontSize: '2em',
     color: theme.palette.primary.darkBlue
   },
+  highlightedInfo: {
+    fontWeight: 700,
+    color: theme.palette.primary.main
+  },
+  mt10: { marginTop: 10 },
   mt15: { marginTop: 15 },
+  mt25: { marginTop: 25 },
   mt30: { marginTop: 30 },
   mt40: { marginTop: 40 },
   mt50: { marginTop: 50 },

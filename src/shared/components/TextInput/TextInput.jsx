@@ -5,9 +5,9 @@ import { BaseInput } from '../BaseInput';
 
 const TextInput = ({ isValid, min, max, required, ...otherProps }) => {
   const handleIsValid = (value) => {
-    if (!required && !value) {
+    if (!required && !value)
       return true;
-    }
+    
     return isValid(value) && inRange(value.length, min, max);
   };
   return <BaseInput isValid={handleIsValid} required={required} {...otherProps} />;
@@ -24,6 +24,9 @@ TextInput.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   disabled: PropTypes.bool,
+  endAdornment: PropTypes.node,
+  type: PropTypes.string,
+  showPassword: PropTypes.bool,
   required: PropTypes.bool
 };
 
@@ -36,6 +39,9 @@ TextInput.defaultProps = {
   min: 0,
   max: 500,
   disabled: false,
+  endAdornment: null,
+  type: 'text',
+  showPassword: false,
   required: false
 };
 

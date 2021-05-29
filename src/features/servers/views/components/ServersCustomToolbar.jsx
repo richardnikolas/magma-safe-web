@@ -13,9 +13,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#FFFFFF',
     '&:hover': {
       backgroundColor: theme.palette.primary.main
-    },
-    '&:disabled': {
-      backgroundColor: theme.palette.primary.gray
     }
   }
 }));

@@ -8,7 +8,8 @@ export const routes = Object.freeze({
     path: '/login'
   },
   servers: {
-    path: '/servers'
+    path: '/servers',
+    param: ':serverId'
   },
   secrets: {
     path: '/secrets'

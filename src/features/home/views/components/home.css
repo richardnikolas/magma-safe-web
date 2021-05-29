@@ -1,0 +1,17 @@
+.title {
+  color: #FFFFFF;
+  font-weight: 700 !important;
+  font-size: 18vh !important;
+  text-align: center;
+  animation: fadeIn ease-in 10s;
+  text-shadow: 10px 4px #700600;
+}
+
+@keyframes fadeIn {
+  0% { 
+    opacity: 0; 
+  }
+  100% { 
+    opacity: 1; 
+  }
+}

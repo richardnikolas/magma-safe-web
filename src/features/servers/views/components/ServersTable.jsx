@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import MUIDataTable from 'mui-datatables';
 import { makeStyles } from '@material-ui/core/styles';
 import { getDateFormatted } from 'src/shared/constants/functions';
 import { serversActions } from 'src/features/servers/redux';
+import { routes } from 'src/shared/constants';
 import ServersCustomToolbar from './ServersCustomToolbar';
 import CreateServerModal from './CreateServerModal';
 
@@ -21,6 +23,7 @@ const getTableData = (userServers) => {
   if (userServers.length > 0) {
     userServers.forEach(server => {
       data.push({
+        serverId: server.server.id,
         serverName: server.server.name,
         numberOfSecrets: server.secretsCount,
         numberOfUsers: server.usersCount,
@@ -35,6 +38,7 @@ const getTableData = (userServers) => {
 const ServersTable = ({ userServers }) => {  
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { push } = useHistory();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCloseModal = () => {
@@ -42,7 +46,18 @@ const ServersTable = ({ userServers }) => {
     setIsModalOpen(!isModalOpen);
   }
 
+  const handleToggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   const tableColumns = [
+    {
+      name: 'serverId',
+      label: 'id',
+      options: {
+        display: false
+      }
+    },
     {
       name: 'serverName',
       label: 'Nome',
@@ -87,11 +102,8 @@ const ServersTable = ({ userServers }) => {
       }
     }
   ];
-  const tableData = getTableData(userServers);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
+  const tableData = getTableData(userServers);
 
   const tableOptions = {
     download: false,
@@ -99,13 +111,16 @@ const ServersTable = ({ userServers }) => {
     filter: false,
     fixedHeader: true,
     selectableRowsHideCheckboxes: true,
+    onRowClick: (rowData) => {
+      push(`${routes.servers.path}/${rowData[0]}`);
+    },
     responsive: 'standard',
     tableBodyMaxHeight: '70vh',
     searchPlaceholder: 'Digite o nome do Server desejado',
-    customToolbar: () => (<ServersCustomToolbar handleClickNewServer={handleOpenModal} />),
+    customToolbar: () => (<ServersCustomToolbar handleClickNewServer={handleToggleModal} />),
     textLabels: {
       body: {
-        noMatch: "Nenhum Server encontrado. Você pode criar um cliando em 'Novo Server'."
+        noMatch: "Nenhum Server encontrado. Você pode criar um clicando em 'Novo Server'."
       },
       pagination: {
         next: "Próxima página",
@@ -130,7 +145,7 @@ const ServersTable = ({ userServers }) => {
       />
       <CreateServerModal open={isModalOpen} onClose={handleCloseModal} />
     </>
-  )
+  );
 };
 
 ServersTable.propTypes = {

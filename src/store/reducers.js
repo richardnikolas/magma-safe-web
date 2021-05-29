@@ -4,6 +4,7 @@ import { authReducer } from 'src/features/auth/redux';
 import { loaderReducer } from 'src/features/loader/redux';
 import { homeReducer } from 'src/features/home/redux';
 import { serversReducer } from 'src/features/servers/redux';
+import { secretsReducer } from 'src/features/secrets/redux';
 
 export default (history) => 
   combineReducers({
@@ -11,6 +12,6 @@ export default (history) =>
     auth: authReducer,
     loader: loaderReducer,
     home: homeReducer,
-    servers: serversReducer
+    servers: serversReducer,
+    secrets: secretsReducer    
   });
-

@@ -29,9 +29,37 @@ export default {
                 }
             }
         },
+        MuiAlert: {
+            filledError: {
+                backgroundColor: '#D11F1F'
+            },
+            filledWarning: {
+                backgroundColor: '#FC8C4E'
+            },
+            filledInfo: {
+                backgroundColor: '#132540'
+            },
+            filledSuccess: {
+                backgroundColor: '#0F6200'
+            }
+        },
+        MuiAccordion: {
+            root: {
+                '&:before': {
+                    display: 'none'
+                }
+            }
+        },
         MuiTableSortLabel: {
             icon: {
                 color: '#FFFFFF !important'
+            }
+        },
+        MuiAccordionSummary: {
+            root: {
+                '@media (max-width: 660px)': {
+                    padding: 0
+                }
             }
         },
         MUIDataTableToolbar: {
@@ -58,7 +86,8 @@ export default {
                     backgroundColor: '#F0EDED'
                 },
                 '&:hover': {
-                    backgroundColor: '#FFF1BE !important'
+                    backgroundColor: '#FFF1BE !important',
+                    cursor: 'pointer'
                 }
             }
         },

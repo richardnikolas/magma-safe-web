@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, IconButton, Divider, List, ListItem, ListItemIcon, ListItemText, useTheme } from '@material-ui/core';
-import { ChevronLeft, Menu as MenuIcon, Home, Lock, Dns, History, AccountBox } from '@material-ui/icons';
+import { ChevronLeft, Menu as MenuIcon, Home, Lock, Dns, AccountBox } from '@material-ui/icons';
 import { drawerItems } from 'src/shared/constants';
 import { homeActions } from 'src/features/home/redux';
 
@@ -95,8 +95,6 @@ const getDrawerIcon = (item) => {
       return <Lock style={styleBtn} />;
     case 'Dns':
       return <Dns style={styleBtn} />;
-    case 'History': 
-      return <History style={styleBtn} />
     case 'AccountBox':
       return <AccountBox style={styleBtn} />
     default:

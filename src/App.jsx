@@ -6,6 +6,7 @@ import { createTheme } from 'src/shared/theme';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import ErrorBoundary from 'src/shared/components/ErrorBoundary.ig';
 import LoaderPage from 'src/features/loader/views/LoaderPage';
+import MagmaSnackbar from 'src/features/home/views/components/MagmaSnackbar';
 import { BrowserRouter } from "react-router-dom";
 import { SmallFooter } from 'src/shared/components';
 import Router from './Router';
@@ -26,6 +27,7 @@ const App = () => {
                 <>
                   <LoaderPage />
                   <Router />
+                  <MagmaSnackbar />
                   <SmallFooter />
                 </>
               </Auth0ProviderWithHistory>

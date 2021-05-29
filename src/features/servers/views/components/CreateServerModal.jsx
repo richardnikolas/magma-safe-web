@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     width: '40%',
-    height: 300,
     position: 'relative',
     borderRadius: 20,
     '@media (min-width: 1600px)': {
@@ -31,8 +30,7 @@ const useStyles = makeStyles((theme) => ({
       width: '80%'
     },
     [theme.breakpoints.down('xs')]: {
-      width: '85%',
-      height: 325
+      width: '85%'
     }
   },
   content: {
@@ -94,21 +92,23 @@ const CreateServerModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const user = useSelector(authSelectors.getUser);
   const [serverName, setServerName] = useState('');
-  
-  const handleCreateServer = async () => {    
-    await dispatch(serversOperations.createNewServer({ adminId: user.id, serverName }));
+
+  const handleClose = () => {
     onClose();
     setServerName('');
-  }
+  };
+
+  const handleCreateServer = async () => {    
+    dispatch(serversOperations.createNewServer({ adminId: user.id, serverName }));
+    handleClose();
+  };
 
   return (
-    <Modal
-      open={open}
-    >
+    <Modal open={open}>
       <Fade in={open}>
         <Box className={classes.modal}>
           <Paper className={classes.paper}>
-            <CloseIcon className={classes.close} onClick={onClose} />
+            <CloseIcon className={classes.close} onClick={handleClose} />
 
             <Grid container className={classes.content}>
               <Grid item xs={12} className={clsx(baseClasses.flexAlignCenter, classes.titleWrapper)}>
@@ -141,7 +141,7 @@ const CreateServerModal = ({ open, onClose }) => {
                 <div className={baseClasses.flexEnd}>
                   <Button 
                     className={classes.secondaryBtn} 
-                    onClick={onClose}
+                    onClick={handleClose}
                   >
                     Voltar
                   </Button>

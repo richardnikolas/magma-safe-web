@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100%',
     alignItems: 'center',
     padding: '70px 0 50px 80px',
-    [theme.breakpoints.up('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '60px 0 50px 0'
     }
   },

@@ -12,6 +12,7 @@ export const createTheme = (color = DEFAULT_THEME) => {
         salmon: '#FF6E64',
         gray: '#F0EDED',
         yellow: '#FFF1BE',
+        orange: '#FC8C4E',
         darkGray: '#454141',
         grayReddish: '#F8EBEB',
         darkRedBrown: '#170909',
@@ -25,6 +26,9 @@ export const createTheme = (color = DEFAULT_THEME) => {
       },
       error: {
         main: '#D11F1F'
+      },
+      success: {
+        main: '#0F6200'
       },
       disabled: {
         main: '#AAAAAA'
